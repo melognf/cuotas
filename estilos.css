@@ -3,7 +3,11 @@ body {
 }
 
 .cuotas {
-    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.cuotasDos {
     display: flex;
     justify-content: center;
 }
@@ -17,10 +21,27 @@ body {
     cursor: pointer;
 }
 
+.items {
+    background-color: rgb(198, 198, 198);
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 .item-full {
     background-color: red;
+    border: 2px solid white;
+}
+
+.items-full {
+    background-color: red;
+    border: 2px solid white;
+
 }
 
 h2 {
     font-family: 'Potta One', cursive;
+    padding: 50px;
 }

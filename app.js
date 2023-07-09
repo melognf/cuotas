@@ -22,7 +22,6 @@ document.querySelectorAll(".item").forEach((item) => {
         }
     } );
 
-    localStorage.setItem("cuotas", item);
 
 
     for(i=0; i<=pos; i++) {
@@ -31,17 +30,32 @@ document.querySelectorAll(".item").forEach((item) => {
             square.classList.add("item-full");
         }
     }
-
     currentValue = parseInt(pos) + 1;
+
+    const selectedItems = Array.from(document.querySelectorAll('.item-full')).map(selectedItem => {
+        return selectedItem.getAttribute("data-pos")
     });
 
-    item.addEventListener("click", () => {
-        const pos =item.getAttribute("data-pos");
-        currentValue = parseInt(pos) + 1;
-        console.log(currentValue);
-    })
+        console.log(selectedItems)
+    localStorage.setItem("cuotas", JSON.stringify(selectedItems));
+
+    });
+
+    
 });
 
+window.addEventListener('load', () => {
+    const selectedItems = JSON.parse(localStorage.getItem("cuotas"));
+    if(selectedItems){
+        selectedItems.forEach(selectedItem => {
+            const square = document.querySelector(`.item-${selectedItem}`);
+            if(!square.classList.contains("item-full")){
+                square.classList.add("item-full");
+            }
+        });
+        currentValue = selectedItems.length;
+    }
+})
 
 
 
